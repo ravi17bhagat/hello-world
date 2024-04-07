@@ -29,8 +29,5 @@ jobs:
       run: |
         docker push ravibhagat17/flask-app:latest
 
-    - name: Login to Netlify
-      run: ntl auth:login
-
-    - name: Build and deploy to Netlify
-      run: ntl deploy --prod
+    - name: Deploy to Netlify
+      run: netlify deploy --prod --auth ${{ secrets.NETLIFY_AUTH_TOKEN }}
