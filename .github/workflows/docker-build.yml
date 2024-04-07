@@ -29,11 +29,8 @@ jobs:
       run: |
         docker push ravibhagat17/flask-app:latest
 
-    - name: Login to Heroku
-      run: heroku container:login
+    - name: Login to Netlify
+      run: ntl auth:login
 
-    - name: Push Docker image to Heroku
-      run: heroku container:push web -a hello-world-flask
-
-    - name: Release Docker image on Heroku
-      run: heroku container:release web -a hello-world-flask
+    - name: Build and deploy to Netlify
+      run: ntl deploy --prod
