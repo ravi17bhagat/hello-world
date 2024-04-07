@@ -28,3 +28,12 @@ jobs:
     - name: Push Docker image to Docker Hub
       run: |
         docker push ravibhagat17/flask-app:latest
+
+    - name: Login to Heroku
+      run: heroku container:login
+
+    - name: Push Docker image to Heroku
+      run: heroku container:push web -a hello-world-flask
+
+    - name: Release Docker image on Heroku
+      run: heroku container:release web -a hello-world-flask
