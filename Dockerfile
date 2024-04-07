@@ -7,6 +7,8 @@ WORKDIR /application
 # Copy the current directory contents into the container at /app
 COPY . /application
 
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y npm  
 RUN npm install -g netlify-cli
 
 # Install any needed dependencies specified in requirements.txt
